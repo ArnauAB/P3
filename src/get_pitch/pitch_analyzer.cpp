@@ -11,7 +11,11 @@ namespace upc {
   void PitchAnalyzer::autocorrelation(const vector<float> &x, vector<float> &r) const {
 
     for (unsigned int l = 0; l < r.size(); ++l) {
-  		/// \TODO Compute the autocorrelation r[l]
+  		/// \FET Compute the autocorrelation r[l]
+      for (unsigned int n = 0; n < x.size()-l; ++n) {
+        r[l] += x[n+l]*x[n];
+      }
+      r[l] = r[l]/x.size();
     }
 
     if (r[0] == 0.0F) //to avoid log() and divide zero 
@@ -26,7 +30,10 @@ namespace upc {
 
     switch (win_type) {
     case HAMMING:
-      /// \TODO Implement the Hamming window
+      /// \FET Implement the Hamming window
+      for(unsigned int i=0; i<frameLen; i++){
+        window[i] = 0.54 - 0.46*cos((2*M_PI*i)/(frameLen-1));
+      }
       break;
     case RECT:
     default:
@@ -50,7 +57,10 @@ namespace upc {
     /// \TODO Implement a rule to decide whether the sound is voiced or not.
     /// * You can use the standard features (pot, r1norm, rmaxnorm),
     ///   or compute and use other ones.
-    return true;
+    if (rmaxnorm < this->llindar_rmax){
+      return true; //SORDO: es unvoiced
+    }
+    return false; //SONORO: no es unvoiced
   }
 
   float PitchAnalyzer::compute_pitch(vector<float> & x) const {
@@ -66,7 +76,7 @@ namespace upc {
     //Compute correlation
     autocorrelation(x, r);
 
-    vector<float>::const_iterator iR = r.begin(), iRMax = iR;
+    vector<float>::const_iterator iR = r.begin(),  iRMax = iR;
 
     /// \TODO 
 	/// Find the lag of the maximum value of the autocorrelation away from the origin.<br>
@@ -75,8 +85,16 @@ namespace upc {
 	///    - The lag corresponding to the maximum value of the pitch.
     ///	   .
 	/// In either case, the lag should not exceed that of the minimum value of the pitch.
-
-    unsigned int lag = iRMax - r.begin();
+    unsigned int lag = npitch_min;
+    float rMax = r[npitch_min];
+    
+    for(unsigned int l=npitch_min+1; l<=npitch_max; ++l){
+      if (r[l]>rMax) {
+        lag = l;
+        rMax = r[l];
+      }
+    }
+    //Línea borrada: unsigned int lag = iRMax - r.begin();
 
     float pot = 10 * log10(r[0]);
 

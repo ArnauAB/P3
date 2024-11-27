@@ -25,8 +25,11 @@ Usage:
     get_pitch --version
 
 Options:
-    -h, --help  Show this screen
-    --version   Show the version of the project
+    --llindar-pot FLOAT   Decision Threshold for power
+    --llindar-r1 FLOAT    Decision Threshold for r1
+    --llindar-rmax FLOAT  Decision Threshold for rmax
+    -h, --help            Show this screen
+    --version             Show the version of the project
 
 Arguments:
     input-wav   Wave file with the audio signal
@@ -46,6 +49,7 @@ int main(int argc, const char *argv[]) {
 
 	std::string input_wav = args["<input-wav>"].asString();
 	std::string output_txt = args["<output-txt>"].asString();
+  float llindar_rmax = stof(args["--llindar-rmax"].asString());
 
   // Read input sound file
   unsigned int rate;
@@ -59,7 +63,7 @@ int main(int argc, const char *argv[]) {
   int n_shift = rate * FRAME_SHIFT;
 
   // Define analyzer
-  PitchAnalyzer analyzer(n_len, rate, PitchAnalyzer::RECT, 50, 500);
+  PitchAnalyzer analyzer(n_len, rate, PitchAnalyzer::RECT, 50, 500, llindar_rmax); //AÑADIR ARGUMENTO llindar_rmax
 
   /// \TODO
   /// Preprocess the input signal in order to ease pitch estimation. For instance,
