@@ -4,6 +4,8 @@
 # distinto de cero, o cero si todos devuelven cero.
 set -o pipefail
 
+LLINDAR_POT=${1:-0.5}
+LLINDAR_R1=${1:-0.5}
 LLINDAR_RMAX=${1:-0.5}
 
 # Put here the program (maybe with path)

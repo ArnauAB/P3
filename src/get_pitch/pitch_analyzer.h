@@ -29,6 +29,8 @@ namespace upc {
       samplingFreq, ///< sampling rate (in samples per second). Has to be set in the constructor call
       npitch_min, ///< minimum value of pitch period, in samples
       npitch_max; ///< maximum value of pitch period, in samples
+      float llindar_pot;
+      float llindar_r1;
       float llindar_rmax;
 	///
 	/// Computes correlation from lag=0 to r.size()
@@ -52,9 +54,13 @@ namespace upc {
 					Window w=PitchAnalyzer::HAMMING,	///< Window type
 					float min_F0 = MIN_F0,		///< Pitch range should be restricted to be above this value
 					float max_F0 = MAX_F0,  	///< Pitch range should be restricted to be below this value
+          float llindar_pot_ = 0.46,
+          float llindar_r1_ = 0.46,
           float llindar_rmax_ = 0.46
 				 )
 	{
+      llindar_pot = llindar_pot_;
+      llindar_r1 = llindar_r1_;
       llindar_rmax = llindar_rmax_;
       frameLen = fLen;
       samplingFreq = sFreq;

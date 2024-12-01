@@ -49,6 +49,8 @@ int main(int argc, const char *argv[]) {
 
 	std::string input_wav = args["<input-wav>"].asString();
 	std::string output_txt = args["<output-txt>"].asString();
+  float llindar_pot = stof(args["--llindar-pot"].asString());
+  float llindar_r1 = stof(args["--llindar-r1"].asString());
   float llindar_rmax = stof(args["--llindar-rmax"].asString());
 
   // Read input sound file
@@ -63,7 +65,7 @@ int main(int argc, const char *argv[]) {
   int n_shift = rate * FRAME_SHIFT;
 
   // Define analyzer
-  PitchAnalyzer analyzer(n_len, rate, PitchAnalyzer::RECT, 50, 500, llindar_rmax); //AÑADIR ARGUMENTO llindar_rmax
+  PitchAnalyzer analyzer(n_len, rate, PitchAnalyzer::RECT, 50, 500, llindar_pot, llindar_r1, llindar_rmax); //AÑADIR ARGUMENTO llindar_rmax
 
   /// \TODO
   /// Preprocess the input signal in order to ease pitch estimation. For instance,
