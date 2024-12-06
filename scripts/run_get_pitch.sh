@@ -4,12 +4,12 @@
 # distinto de cero, o cero si todos devuelven cero.
 set -o pipefail
 
-LLINDAR_POT=${1:-0.5}
-LLINDAR_R1=${1:-0.5}
-LLINDAR_RMAX=${1:-0.5}
+LLINDAR_POT=${1:--16}
+LLINDAR_R1=${1:-0.3}
+LLINDAR_RMAX=${1:-0.46}
 
 # Put here the program (maybe with path)
-GETF0="get_pitch --llindar-rmax $LLINDAR_RMAX"
+GETF0="get_pitch --llindar-pot $LLINDAR_POT --llindar-r1 $LLINDAR_R1 --llindar-rmax $LLINDAR_RMAX"
 
 for fwav in pitch_db/train/*.wav; do
     ff0=${fwav/.wav/.f0}

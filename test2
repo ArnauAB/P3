@@ -1,0 +1,6 @@
+#!/bin/bash
+
+for  llindar_pot in $(seq -10 1 5); do
+    echo -en "$llindar_pot\t"
+    run_get_pitch $llindar_pot | grep "TOTAL"
+done | sort -t: -k2n
