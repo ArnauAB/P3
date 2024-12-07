@@ -22,7 +22,8 @@ Ejercicios básicos
 	 NOTA: es más que probable que tenga que usar Python, Octave/MATLAB u otro programa semejante para
 	 hacerlo. Se valorará la utilización de la biblioteca matplotlib de Python.  
 	> Para la señal de audio 'prueba.wav' el primer fonema se trata de un diftongo ya que la palabra "I" en inglés se pronuncia como la combinación "ai", por tanto si hacemos zoom para separar las vocales diferenciamos un fonema inicial correspondiente a la vocal "a" de duración 15ms (empezando a pronunciarse en el milisegundo 582 de grabación), calculando la autocorrelación de este tramo de señal observamos el primer máximo secundario alrededor de la muestra #21.
- 	> ![image](https://github.com/user-attachments/assets/1fea2f86-e7e7-4319-be41-accc64decbc3)
+ 	> ![image](https://github.com/user-attachments/assets/8b6ddd46-f00b-44a0-8004-005314f4d8f4)
+
 
 
    * Determine el mejor candidato para el periodo de pitch localizando el primer máximo secundario de la
