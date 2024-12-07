@@ -1,6 +1,6 @@
 #!/bin/bash
 
-for  llindar_pot in $(seq -10 1 5); do
+for  llindar_pot in $(seq -50 1 -20); do
     echo -en "$llindar_pot\t"
-    run_get_pitch $llindar_pot | grep "TOTAL"
+    run_get_pitch $llindar_pot 0.55 0.38 0.0005 | grep "TOTAL"
 done | sort -t: -k2n

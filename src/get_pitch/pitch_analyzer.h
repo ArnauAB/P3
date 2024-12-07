@@ -32,6 +32,7 @@ namespace upc {
       float llindar_pot;
       float llindar_r1;
       float llindar_rmax;
+      float llindar_cclip;
 	///
 	/// Computes correlation from lag=0 to r.size()
 	///
@@ -54,14 +55,16 @@ namespace upc {
 					Window w=PitchAnalyzer::HAMMING,	///< Window type
 					float min_F0 = MIN_F0,		///< Pitch range should be restricted to be above this value
 					float max_F0 = MAX_F0,  	///< Pitch range should be restricted to be below this value
-          float llindar_pot_ = 0.46,
-          float llindar_r1_ = 0.46,
-          float llindar_rmax_ = 0.46
+          float llindar_pot_ = -22,
+          float llindar_r1_ = 0.87,
+          float llindar_rmax_ = 0.42,
+          float llindar_cclip_ = 0.0145
 				 )
 	{
       llindar_pot = llindar_pot_;
       llindar_r1 = llindar_r1_;
       llindar_rmax = llindar_rmax_;
+      llindar_cclip = llindar_cclip_;
       frameLen = fLen;
       samplingFreq = sFreq;
       set_f0_range(min_F0, max_F0);

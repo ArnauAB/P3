@@ -1,6 +1,6 @@
 #!/bin/bash
 
-for  llindar_rmax in $(seq 0.465 0.005 0.475); do
-    echo -en "$llindar_rmax\t"
-    run_get_pitch $llindar_rmax | grep "TOTAL"
+for  llindar_cclip in $(seq 0.015 0.0005 0.02); do
+    echo -en "$llindar_cclip\t"
+    run_get_pitch -22 0.87 0.42 $llindar_cclip | grep "TOTAL"
 done | sort -t: -k2n

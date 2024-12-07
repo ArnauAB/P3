@@ -57,7 +57,7 @@ namespace upc {
     /// \TODO Implement a rule to decide whether the sound is voiced or not.
     /// * You can use the standard features (pot, r1norm, rmaxnorm),
     ///   or compute and use other ones.
-    if (pot < this->llindar_pot && r1norm < this->llindar_r1 && rmaxnorm < this->llindar_rmax){
+    if (pot < this->llindar_pot && (r1norm < this->llindar_r1 || rmaxnorm < this->llindar_rmax)){
       return true; //SORDO: es unvoiced
     }
     return false; //SONORO: no es unvoiced

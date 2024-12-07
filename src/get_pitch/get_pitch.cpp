@@ -25,12 +25,12 @@ Usage:
     get_pitch --version
 
 Options:
-    --llindar-pot FLOAT   Decision Threshold for power [default: -45]
-    --llindar-r1 FLOAT    Decision Threshold for r1 [default: 0.55]
-    --llindar-rmax FLOAT  Decision Threshold for rmax [default: 0.38]
-    --thresh_cclip FLOAT  Decision Threshold for cclip [default: 0.0005]
-    -h, --help            Show this screen
-    --version             Show the version of the project
+    --llindar-pot FLOAT    Decision Threshold for power [default: -22]
+    --llindar-r1 FLOAT     Decision Threshold for r1 [default: 0.87]
+    --llindar-rmax FLOAT   Decision Threshold for rmax [default: 0.42]
+    --llindar-cclip FLOAT  Decision Threshold for central clipping [default: 0.0145]
+    -h, --help             Show this screen
+    --version              Show the version of the project
 
 Arguments:
     input-wav   Wave file with the audio signal
@@ -67,14 +67,14 @@ int main(int argc, const char *argv[]) {
   int n_shift = rate * FRAME_SHIFT;
 
   // Define analyzer
-  PitchAnalyzer analyzer(n_len, rate, PitchAnalyzer::RECT, 50, 500, llindar_pot, llindar_r1, llindar_rmax); //AÑADIR ARGUMENTO llindar_rmax
+  PitchAnalyzer analyzer(n_len, rate, PitchAnalyzer::RECT, 50, 500, llindar_pot, llindar_r1, llindar_rmax, llindar_cclip); //AÑADIR ARGUMENTO llindar_rmax
 
   /// \TODO
   /// Preprocess the input signal in order to ease pitch estimation. For instance,
   /// central-clipping or low pass filtering may be used.
   float max = *std::max_element(x.begin(), x.end());
   for(int i = 0; i < (int)x.size(); i++) {
-    if(abs(x[i]) < thresh_cclip*max) {
+    if(abs(x[i]) < llindar_cclip*max) {
       x[i] = 0.0F;
     } 
   }
