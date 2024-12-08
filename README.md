@@ -85,7 +85,7 @@ Ejercicios básicos
   	><img width="429" alt="image" src="https://github.com/user-attachments/assets/6b8d3004-4fbd-4f5b-b26a-c6bace302a29">
    	>\
   	>\
-  	>Vistos los resultados, hemos añadido algunos parámetros más para optimizar mejor el cálculo. Concretamente, hemos añadido un filtro de mediana y un central clipping con umbral de 0.0145, que serán explicados mejor más adelante. En conclusión, estos son los resultados definitivos:
+  	>Vistos los resultados, hemos añadido algunos parámetros más para optimizar mejor el cálculo. Concretamente, hemos añadido un filtro de mediana y un central clipping con umbral de 0.0145, que serán explicados mejor más adelante. En conclusión, estos son los resultados definitivos:\
   	><img width="415" alt="image" src="https://github.com/user-attachments/assets/f163c479-7233-4d98-b453-e0b37014a018">
 
 
