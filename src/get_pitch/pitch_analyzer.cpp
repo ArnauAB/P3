@@ -1,8 +1,13 @@
 /// @file
 
 #include <iostream>
+#include <fstream>
+#include <string.h>
+#include <errno.h>
 #include <math.h>
+#include "wavfile_mono.h"
 #include "pitch_analyzer.h"
+#include "docopt.h"
 
 using namespace std;
 
@@ -89,29 +94,44 @@ namespace upc {
     for (iR = (r.begin() + npitch_min); iR < (r.begin() + npitch_max); iR++) {
       if (*iR > *iRMax)
         iRMax = iR;
-    }
+    } 
+    
+    float pot = 10 * log10(r[0]);
     unsigned int lag = npitch_min;
     float rMax = r[npitch_min];
-    
+       
     for(unsigned int l=npitch_min+1; l<=npitch_max; ++l){
       if (r[l]>rMax) {
         lag = l;
         rMax = r[l];
       }
     }
-    //Línea borrada: unsigned int lag = iRMax - r.begin();
 
-    float pot = 10 * log10(r[0]);
+    float r1norm=r[1]/r[0];
+    float rmaxnorm=r[lag]/r[0];
 
+    ofstream pot_file("pot.txt", ios::app);
+    pot_file << pot << '\n';
+    pot_file.close();
+    
+    ofstream r1norm_file("r1norm.txt", ios::app);
+    r1norm_file << r1norm << '\n';
+    r1norm_file.close();
+    
+    ofstream rmaxnorm_file("rmaxnorm.txt", ios::app);
+    rmaxnorm_file << rmaxnorm << '\n';
+    rmaxnorm_file.close();
+
+   
     //You can print these (and other) features, look at them using wavesurfer
     //Based on that, implement a rule for unvoiced
     //change to #if 1 and compile
 #if 0
     if (r[0] > 0.0F)
-      cout << pot << '\t' << r[1]/r[0] << '\t' << r[lag]/r[0] << endl;
+      cout << pot << '\t' << r1norm << '\t' << rmaxnorm << endl;
 #endif
     
-    if (unvoiced(pot, r[1]/r[0], r[lag]/r[0]))
+    if (unvoiced(pot, r1norm, rmaxnorm))
       return 0;
     else
       return (float) samplingFreq/(float) lag;
