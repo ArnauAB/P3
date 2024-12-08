@@ -55,6 +55,8 @@ Ejercicios básicos
 
 	    Recuerde configurar los paneles de datos para que el desplazamiento de ventana sea el adecuado, que
 		en esta práctica es de 15 ms.
+		>![image](https://github.com/user-attachments/assets/e9933801-8b7c-4419-8727-a5b8f231f5dc)
+
 
       - Use el estimador de pitch implementado en el programa `wavesurfer` en una señal de prueba y compare
 	    su resultado con el obtenido por la mejor versión de su propio sistema.  Inserte una gráfica
@@ -66,6 +68,19 @@ Ejercicios básicos
   * Optimice los parámetros de su sistema de estimación de pitch e inserte una tabla con las tasas de error
     y el *score* TOTAL proporcionados por `pitch_evaluate` en la evaluación de la base de datos 
 	`pitch_db/train`..
+	>Para empezar hemos parametrizado la señal con tres umbrales:\
+	>llindar_pot = -22\
+	>llindar_r1 = 0.87\
+	>llindar_rmax = 0.42\
+  	>\
+  	>De este modo, el resultado de ejecutar run_get_pitch en la línea de comandos sale así:
+  	><img width="429" alt="image" src="https://github.com/user-attachments/assets/6b8d3004-4fbd-4f5b-b26a-c6bace302a29">
+   	>\
+  	>\
+  	>Vistos los resultados, hemos añadido algunos parámetros más para optimizar mejor el cálculo. Concretamente, hemos añadido un filtro de mediana y un central clipping con umbral de 0.0145, que serán explicados mejor más adelante. En conclusión, estos son los resultados definitivos:
+  	><img width="415" alt="image" src="https://github.com/user-attachments/assets/f163c479-7233-4d98-b453-e0b37014a018">
+
+
 
 Ejercicios de ampliación
 ------------------------
