@@ -55,7 +55,13 @@ Ejercicios básicos
 
 	    Recuerde configurar los paneles de datos para que el desplazamiento de ventana sea el adecuado, que
 		en esta práctica es de 15 ms.
-		>![image](https://github.com/user-attachments/assets/e9933801-8b7c-4419-8727-a5b8f231f5dc)
+		>En la siguiente captura del Wavesurfer visualizamos, en este orden:\
+    		prueba.txt\
+    		pot.txt\
+   		r1norm.txt\
+    		rmaxnorm.txt
+    		![image](https://github.com/user-attachments/assets/88f4a42f-9419-4c22-9b0d-518027f7660c)
+
 
 
       - Use el estimador de pitch implementado en el programa `wavesurfer` en una señal de prueba y compare
@@ -64,6 +70,8 @@ Ejercicios básicos
      
 		Aunque puede usar el propio Wavesurfer para obtener la representación, se valorará
 	 	el uso de alternativas de mayor calidad (particularmente Python).
+		><img width="960" alt="image" src="https://github.com/user-attachments/assets/6aa9cce0-a7b0-438d-a2a2-e886ea7950bf">
+
   
   * Optimice los parámetros de su sistema de estimación de pitch e inserte una tabla con las tasas de error
     y el *score* TOTAL proporcionados por `pitch_evaluate` en la evaluación de la base de datos 
