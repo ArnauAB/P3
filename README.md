@@ -34,7 +34,7 @@ Ejercicios básicos
    * Implemente la regla de decisión sonoro o sordo e inserte el código correspondiente.
      > Para implementar la regla de decisión de fonema sonoro o sordo implementamos la función unvoiced, que retorna un resultado boolean en función de si la autocorrelación y la potencia de la señal están dentro de unos rangos, entonces será sorda (true) o en caso contrario sonora (false) tal que:  
      > ![image](https://github.com/user-attachments/assets/eaa1ae2a-660f-4703-aa9d-f648512fe5df)  
-     > Luego la usamos más adelante para que nos diga si la señal es sorda, o en caso de que sea sonora nos calcule además el pitch correspondiente:
+     > Luego la usamos más adelante para que nos diga si la señal es sorda, o en caso de que sea sonora nos calcule además el pitch correspondiente:  
      > ![image](https://github.com/user-attachments/assets/7ce1d8cc-859c-458c-bab7-d7e61f0f8229)
 
 
